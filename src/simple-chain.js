@@ -1,26 +1,71 @@
 const CustomError = require("../extensions/custom-error");
 
 const chainMaker = {
+  chainArray: [],
+  result: [],
   getLength() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    this.chainArray.length;
+    return this;
   },
-  addLink(value) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+  addLink(value){
+    if(value === undefined){
+      this.chainArray.push('( ' + ' )');
+      return this;  
+    }
+    else{
+      this.chainArray.push('( ' + value + ' )');
+      return this;  
+    }  
   },
   removeLink(position) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if(position < 1 || position > this.chainArray.getLength){
+      this.chainArray = [];
+      throw Error('Error on removing wrong link');
+    }
+    else{
+      this.chainArray.splice(position - 1, 1);
+      return this;
+    }
   },
   reverseChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    this.chainArray.reverse();
+    return this;
   },
   finishChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    this.result = this.chainArray;
+    this.chainArray = [];
+    return this.result.join('~~');
   }
 };
 
+
 module.exports = chainMaker;
+
+
+
+/*
+
+const chainMaker = {
+  chainArray: [],
+  getLength() {
+    this.chainArray.length;
+    return this;
+  },
+  addLink(value){
+    this.chainArray.push('( ' + value + ' )');
+    return this;    
+  },
+  removeLink(position) {
+    this.chainArray.splice(position - 1, 1);
+    return this;
+  },
+  reverseChain() {
+    this.chainArray.reverse();
+    return this;
+  },
+  finishChain() {
+    return this.chainArray.join('~~');
+  }
+};
+
+*/

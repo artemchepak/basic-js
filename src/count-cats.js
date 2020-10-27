@@ -6,3 +6,6 @@ module.exports = function countCats(array/* matrix */) {
     secondArray.forEach(element => (element === '^^') ? (result++) : result = result));
   return result;
 };
+
+
+
